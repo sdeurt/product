@@ -11,5 +11,5 @@ export class CreateProductDto {
 
     quantity: number;
 
-    admin: boolean;
+   
 }

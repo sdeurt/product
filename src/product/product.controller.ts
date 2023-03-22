@@ -6,7 +6,7 @@ import { Product } from './entities/product.entity';
 
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+  constructor(private readonly productService: ProductService) { }
 
   @Post()
   async create(@Body() createProductDto: CreateProductDto) {
@@ -28,7 +28,7 @@ export class ProductController {
     //vérifie que le nom existe
     const isProductExist = await this.productService.findOneByName(name);
     if (!isProductExist) {
-      throw new NotFoundException(`le produit n'existe pas`);
+    throw new NotFoundException(`le produit n'existe pas`);
     }
     return await this.productService.findOneByName(name);
   }
@@ -47,7 +47,7 @@ export class ProductController {
     };
     /**supprime le produit sélectionné */
     await this.productService.remove(+id);
-    
+
     return {
       statusCode: 200,
       message: 'affichage du produit supprimé',
