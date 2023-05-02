@@ -9,7 +9,6 @@ export class ProductService {
   async create(createProductDto: CreateProductDto): Promise<Product> {
     const newProduct = new Product();
 
-    newProduct.id = createProductDto.id;
     newProduct.name = createProductDto.name;
     newProduct.price = createProductDto.price;
     newProduct.quantity = createProductDto.quantity;
@@ -25,11 +24,11 @@ export class ProductService {
       return products;
     }
   }
-  /** Récupère un User par son id*/
+  /** Récupère un produit par son id*/
   async findOneById(id: number): Promise<Product> {
     const product = await Product.findOneBy({ id });
 
-    if (product) {
+    if (product) { 
       return product;
     };
 
@@ -49,7 +48,6 @@ export class ProductService {
   /**modification d'un produit */
   async update(id: number, updateProductDto: UpdateProductDto) {
     const productUpdate = await Product.findOneBy({ id })
-    productUpdate.id = updateProductDto.id;
     productUpdate.name = updateProductDto.name;
     productUpdate.price = updateProductDto.price;
     productUpdate.quantity = updateProductDto.quantity;
